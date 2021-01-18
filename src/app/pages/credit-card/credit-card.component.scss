@@ -1,0 +1,60 @@
+.form-group{
+    min-width: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 15px auto;
+    flex-direction: row-reverse;
+    mat-form-field{
+        max-width: calc(45% - 14px);
+        margin: auto 7px;
+        width: 100%;
+        margin-bottom: 10px;
+        &.full{
+            max-width: 90%;
+        }
+    }
+    .total{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        max-width: 500px;
+        .divider{
+            height: 3px;
+            background-color: black;
+            width: 95%;
+            margin: 7px;
+        }
+        .total-box{
+            display: flex;
+            justify-content: space-between;
+            width: 95%;
+            margin: 10px 7px;
+            .total-label{
+                font-size: 25px;
+            }
+            .total-value{
+                font-size: 18px;
+            }
+        }
+    }
+    .form-fields{
+        max-width: 500px;
+        justify-content: space-evenly;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .card-container{
+        width: 90%;
+    }
+    .form-button{
+        margin-top: 15px;
+        min-width: 150px;
+    }
+    @media screen and (max-width: 997px){
+        max-width: 500px;
+        flex-direction: row;
+    }
+}

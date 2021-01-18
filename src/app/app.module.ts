@@ -8,6 +8,10 @@ import { CreditCardService } from './services/credit-card.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardModule } from 'ngx-card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { CardModule } from 'ngx-card';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CardModule
+    CardModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTooltipModule
   ],
   providers: [
     CreditCardService,

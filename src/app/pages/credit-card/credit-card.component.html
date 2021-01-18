@@ -1,26 +1,38 @@
 <form (submit)="submit()" class="form-group" [formGroup]="form" card container=".card-container" formatting="true">
-    <div class="form-control">
-        <label for="creditCardNumber">Credit Card Number</label>
-        <input type="text" formControlName="creditCardNumber" name="creditCardNumber" id="creditCardNumber" card-number>
+    <div class="total">
+        <div class="divider"></div>
+        <div class="total-box">
+            <div class="total-label">
+                Total:
+            </div>
+            <div class="total-value">
+                {{form.get('amount').value | currency}}
+            </div>
+        </div>
+        <div class="divider"></div>
     </div>
-    <div class="form-control">
-        <label for="cardHolder">Card Holder</label>
-        <input type="text" formControlName="cardHolder" name="cardHolder" id="cardHolder" card-name>
+    <div class="form-fields">
+        <mat-form-field class="full">
+            <input matInput type="text" placeholder="Credit Card Number*" matTooltip="Only numbers exactly as informed in the card" formControlName="creditCardNumber" name="creditCardNumber" id="creditCardNumber"
+                card-number>
+            <mat-error *ngIf="form.get('creditCardNumber').errors?.required">The Credit Card number is required</mat-error>
+            <mat-error *ngIf="form.get('creditCardNumber').errors?.invalid">The Credit Card number is invalid</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full">
+            <input matInput type="text" placeholder="Card Holder*" matTooltip="Exactly as informed in the card" formControlName="cardHolder" name="cardHolder" id="cardHolder" card-name>
+            <mat-error *ngIf="form.get('cardHolder').errors?.required">The Credit Card Holder is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Expiration Date*" matTooltip="The format should be MM/YYYY" formControlName="expirationDate" name="expirationDate" id="expirationDate"
+                card-expiry>
+            <mat-error *ngIf="form.get('expirationDate').errors?.required">The Expiration Date is required</mat-error>
+            <mat-error *ngIf="form.get('expirationDate').errors?.invalid">The Card has expired</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="string" placeholder="Security Code" matTooltip="You can find this at the back of your card" formControlName="securityCode" name="securityCode" id="securityCode" card-cvc>
+            <mat-error *ngIf="form.get('securityCode').errors?.minlength">The Security Code must have at least 3 digits</mat-error>
+        </mat-form-field>
     </div>
-    <div class="form-control">
-        <label for="expirationDate">Expiration Date</label>
-        <input type="text" formControlName="expirationDate" name="expirationDate" id="expirationDate" card-expiry>
-    </div>
-    <div class="form-control">
-        <label for="securityCode">Security Code</label>
-        <input type="string" formControlName="securityCode" name="securityCode" id="securityCode" card-cvc>
-    </div>
-    <div class="form-control">
-        <label for="amount">Amount</label>
-        <input type="number" formControlName="amount" name="amount" id="amount">
-    </div>
-    <div class="form-buttons">
-        <button type="submit">Confirm</button>
-    </div>
+    <div class="card-container"></div>
+    <button class="form-button" type="submit" mat-raised-button color="primary">Confirm</button>
 </form>
-<div class="card-container"></div>

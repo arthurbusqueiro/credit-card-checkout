@@ -13,4 +13,8 @@ export class FormUtil {
             }
         });
     }
+
+    public static generateRandomValue(minimun: number, maximum: number): number {
+        return Number.parseFloat(((Math.random() * (maximum - minimun + 1)) || minimun).toFixed(2));
+    }
 }

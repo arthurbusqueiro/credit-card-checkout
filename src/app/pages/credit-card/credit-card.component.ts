@@ -22,11 +22,11 @@ export class CreditCardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      creditCardNumber: new FormControl(null, [Validators.required, Validators.minLength(12)]),
+      creditCardNumber: new FormControl(null, [Validators.required, this.isValidCard]),
       cardHolder: new FormControl(null, Validators.required),
       expirationDate: new FormControl(null, [Validators.required, this.isValidDate]),
       securityCode: new FormControl(null, [Validators.minLength(3), Validators.maxLength(3)]),
-      amount: new FormControl(null, [Validators.required, Validators.min(1)])
+      amount: new FormControl(FormUtil.generateRandomValue(100, 2000), [Validators.required, Validators.min(1)])
     });
   }
 
@@ -59,8 +59,55 @@ export class CreditCardComponent implements OnInit, OnDestroy {
   }
 
   isValidDate(control: AbstractControl): any {
-    if (!moment(control.value, 'YYYY-MM-DD').isAfter(moment())) {
-      return { expirationDate: 'The card has expired' };
+    if (!control.value) {
+      return;
+    }
+    if (!moment(control.value.replace(/\s/g, ''), 'MM/YYYY').isAfter(moment())) {
+      return { invalid: 'The card has expired' };
     }
   }
+
+  isValidCard(control: AbstractControl): ValidationErrors {
+    if (!control.value) {
+      return;
+    }
+    const copy = { ...control };
+    let numbers = copy.value.replace(/\s/g, '').split('').map((d) => Number.parseInt(d, 10));
+
+    // Drop the last digit:
+    const last = numbers.pop();
+
+    // Reverse the digits:
+    numbers = numbers.reverse();
+
+    // Multiple odd digits by 2
+    numbers = numbers.map((d) => {
+      if ((d % 2) !== 0) {
+        d *= 2;
+      }
+      return d;
+    });
+
+    // Subtract 9 to numbers over 9
+    numbers = numbers.map((d) => {
+      if (d > 9) {
+        d -= 9;
+      }
+      return d;
+    });
+
+    // Add all numbers
+    const total = numbers.reduce((sum, val) => {
+      sum += val;
+      return sum;
+    }, 0);
+
+    // Mod 10
+    if (last !== Number.parseInt((total / 10).toFixed(0), 10)) {
+      return {
+        invalid: 'The Credit Card Number is invalid'
+      };
+    }
+  }
+
 }
