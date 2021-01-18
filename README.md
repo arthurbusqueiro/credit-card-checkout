@@ -2,18 +2,24 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
 
+To run this project please install libraries using:
+
+`npm install`
+
+Install libraries for the fake Rest API navigating to the /API folder and runnung:
+
+`npm install`
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This project has a fake Rest API to simulate requests. To start the API application:
 
-## Code scaffolding
+Run `npm run start-api` to start an express server runningg on `http://localhost:44666/`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To start the front-end application:
 
-## Build
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Observations
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* The amount to be paid is randomly generated between 100 and 2000

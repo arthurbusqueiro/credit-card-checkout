@@ -1,3 +1,9 @@
-<!-- <button routerLink="credit-card">Pay</button> -->
+<div class="payment-method" *ngIf="!selectedMethod">
+  Choose your payment method:
+  <br>
+  <br>
+  <button (click)="selectMethod('credit-card')" mat-raised-button>Credit Card</button>
+</div>
 
-<router-outlet></router-outlet>
+<router-outlet *ngIf="selectedMethod"></router-outlet>
+<ngx-spinner></ngx-spinner>

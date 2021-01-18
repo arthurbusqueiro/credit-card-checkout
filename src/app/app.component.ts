@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  
+  selectedMethod: string;
+
+  constructor(
+    private router: Router
+  ) {
+
+  }
+
+  selectMethod(method: string): void {
+    this.selectedMethod = method;
+    this.router.navigate([method]);
+  }
 }
