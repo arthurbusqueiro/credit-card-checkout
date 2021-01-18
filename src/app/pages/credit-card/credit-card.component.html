@@ -1,0 +1,26 @@
+<form (submit)="submit()" class="form-group" [formGroup]="form" card container=".card-container" formatting="true">
+    <div class="form-control">
+        <label for="creditCardNumber">Credit Card Number</label>
+        <input type="text" formControlName="creditCardNumber" name="creditCardNumber" id="creditCardNumber" card-number>
+    </div>
+    <div class="form-control">
+        <label for="cardHolder">Card Holder</label>
+        <input type="text" formControlName="cardHolder" name="cardHolder" id="cardHolder" card-name>
+    </div>
+    <div class="form-control">
+        <label for="expirationDate">Expiration Date</label>
+        <input type="text" formControlName="expirationDate" name="expirationDate" id="expirationDate" card-expiry>
+    </div>
+    <div class="form-control">
+        <label for="securityCode">Security Code</label>
+        <input type="string" formControlName="securityCode" name="securityCode" id="securityCode" card-cvc>
+    </div>
+    <div class="form-control">
+        <label for="amount">Amount</label>
+        <input type="number" formControlName="amount" name="amount" id="amount">
+    </div>
+    <div class="form-buttons">
+        <button type="submit">Confirm</button>
+    </div>
+</form>
+<div class="card-container"></div>
