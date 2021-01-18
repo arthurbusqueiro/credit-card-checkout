@@ -5,8 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start-api": "node ./API/bin/server.js"
   },
   "private": true,
   "dependencies": {
