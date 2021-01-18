@@ -43,7 +43,6 @@ export class CreditCardComponent implements OnInit, OnDestroy {
       const result = await this.postForm(this.form.value);
       this.snackBar.open(result, 'OK', { duration: 2000 });
       setTimeout(() => {
-        this.form.reset();
         window.location.reload();
       }, 2000);
     }
