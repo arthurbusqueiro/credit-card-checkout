@@ -1,4 +1,6 @@
-# CreditCardCheckout
+# Credit Card Checkout
+
+![alt text](https://repository-images.githubusercontent.com/330479240/0c06b300-5930-11eb-849e-9f12c68d17c8)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
 
